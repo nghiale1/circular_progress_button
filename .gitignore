@@ -32,6 +32,7 @@ migrate_working_dir/
 .pub/
 pubspec.lock
 /build/
+example/**/build
 
 # Symbolication related
 app.*.symbols
