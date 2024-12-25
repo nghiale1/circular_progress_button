@@ -1,7 +1,7 @@
 name: circular_progress_button
 description: A Flutter package providing a customizable circular progress button that fills in three steps.
 homepage: https://github.com/nghiale1/circular_progress_button
-version: 0.0.1
+version: 0.0.2
 
 environment:
   sdk: ">=3.5.1 <4.0.0"
