@@ -1,5 +1,3 @@
-## 1.0.0
+## 0.0.1
 
-* Initial version.
-* List các tính năng chính của package
-* Các thay đổi quan trọng
+- Initial release
