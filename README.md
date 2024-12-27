@@ -2,6 +2,8 @@
 
 A Flutter package providing a customizable circular progress button that fills in three steps.
 
+![Screen_recording_20241227_142915](https://github.com/user-attachments/assets/8fc5b1f0-7909-4e6f-924e-9b3374b743f8)
+
 ## Features
 
 - Circular progress indicator that fills in three steps (33%, 66%, 100%)
