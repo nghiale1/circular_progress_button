@@ -33,31 +33,8 @@ class MyHomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Default theme
-            CircularProgressButton(
-              onTap: () => print('Tapped!'),
-              onComplete: () => print('Completed!'),
-              totalSteps: 5,
-              currentStep: 1,
-            ),
 
             const SizedBox(height: 32),
-
-            // Custom theme
-            CircularProgressButton(
-              theme: ProgressButtonTheme(
-                progressColor: Colors.green,
-                backgroundColor: Colors.green.withOpacity(0.3),
-                strokeWidth: 10,
-                size: 80,
-                iconSize: 50,
-                icon: Icons.check,
-              ),
-              onTap: () => print('Custom button tapped!'),
-              animationDuration: const Duration(milliseconds: 1000),
-              totalSteps: 7,
-              currentStep: 2,
-            ),
 
             // Custom theme
             CircularProgressButton(
@@ -67,9 +44,10 @@ class MyHomePage extends StatelessWidget {
                 strokeWidth: 10,
                 size: 80,
                 iconSize: 50,
-                icon: Icons.check,
+                icon: Icons.navigate_next,
               ),
               onTap: () => print('Custom button tapped!'),
+              onComplete: () => print('Completed!'),
               animationDuration: const Duration(milliseconds: 1000),
               totalSteps: 5,
               currentStep: 0,

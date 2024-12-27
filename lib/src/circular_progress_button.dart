@@ -8,19 +8,19 @@ class CircularProgressButton extends StatefulWidget {
   final Duration animationDuration;
   final VoidCallback? onComplete;
   final int totalSteps;
-  final int? currentStep;
+  final int currentStep;
 
   const CircularProgressButton({
     Key? key,
     required this.onTap,
     required this.totalSteps,
-    this.currentStep,
+    this.currentStep = 0,
     this.theme = const ProgressButtonTheme(),
     this.animationDuration = const Duration(seconds: 2),
     this.onComplete,
   }) : assert(totalSteps > 0, 'Total steps must be greater than 0'),
-        assert(currentStep == null || (currentStep >= 0 && currentStep < totalSteps),
-        'Current step must be less than total steps'),
+        assert((currentStep >= 0 && currentStep <= totalSteps),
+        'Current step must be less than or equal total steps'),
         super(key: key);
 
   @override
@@ -47,8 +47,8 @@ class _CircularProgressButtonState extends State<CircularProgressButton>
 
   void _initializeProgress() {
     _progressPerStep = 1.0 / widget.totalSteps;
-    _currentStep = widget.currentStep ?? 0;
-    _previousProgress = _currentStep * _progressPerStep;
+    _currentStep = widget.currentStep;
+    _previousProgress = 0.0;
     _currentProgress = _previousProgress;
 
     // Don't set target progress if currentStep is 0
