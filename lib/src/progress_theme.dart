@@ -15,6 +15,7 @@ class ProgressButtonTheme {
   final double size;
 
   /// The icon shown in the button
+  final Widget? iconWidget;
   final IconData icon;
 
   /// The size of the icon
@@ -28,6 +29,7 @@ class ProgressButtonTheme {
     this.backgroundColor = Colors.black12,
     this.strokeWidth = 8.0,
     this.size = 60.0,
+    this.iconWidget,
     this.icon = Icons.arrow_forward,
     this.iconSize = 40.0,
     this.iconColor = Colors.white,
@@ -40,6 +42,7 @@ class ProgressButtonTheme {
     double? strokeWidth,
     double? size,
     IconData? icon,
+    Widget? iconWidget,
     double? iconSize,
     Color? iconColor,
   }) {
@@ -49,6 +52,7 @@ class ProgressButtonTheme {
       strokeWidth: strokeWidth ?? this.strokeWidth,
       size: size ?? this.size,
       icon: icon ?? this.icon,
+      iconWidget: iconWidget ?? this.iconWidget,
       iconSize: iconSize ?? this.iconSize,
       iconColor: iconColor ?? this.iconColor,
     );

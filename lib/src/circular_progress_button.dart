@@ -18,9 +18,9 @@ class CircularProgressButton extends StatefulWidget {
     this.theme = const ProgressButtonTheme(),
     this.animationDuration = const Duration(seconds: 2),
     this.onComplete,
-  }) : assert(totalSteps > 0, 'Total steps must be greater than 0'),
+  })  : assert(totalSteps > 0, 'Total steps must be greater than 0'),
         assert((currentStep >= 0 && currentStep <= totalSteps),
-        'Current step must be less than or equal total steps'),
+            'Current step must be less than or equal total steps'),
         super(key: key);
 
   @override
@@ -53,7 +53,6 @@ class _CircularProgressButtonState extends State<CircularProgressButton>
 
     // Don't set target progress if currentStep is 0
     _targetProgress = _currentStep * _progressPerStep;
-
   }
 
   void _initializeAnimation() {
@@ -64,18 +63,20 @@ class _CircularProgressButtonState extends State<CircularProgressButton>
 
     _progressAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(parent: _animationController, curve: Curves.easeInOut),
-    )..addListener(() {
-      setState(() {
-        _currentProgress = _previousProgress +
-            (_targetProgress - _previousProgress) * _progressAnimation.value;
-      });
-    })..addStatusListener((status) {
-      if (status == AnimationStatus.completed) {
-        if (_currentProgress >= 0.99) {
-          widget.onComplete?.call();
+    )
+      ..addListener(() {
+        setState(() {
+          _currentProgress = _previousProgress +
+              (_targetProgress - _previousProgress) * _progressAnimation.value;
+        });
+      })
+      ..addStatusListener((status) {
+        if (status == AnimationStatus.completed) {
+          if (_currentProgress >= 0.99) {
+            widget.onComplete?.call();
+          }
         }
-      }
-    });
+      });
 
     // Only start animation if currentStep > 0
     if (_currentStep > 0) {
@@ -90,9 +91,9 @@ class _CircularProgressButtonState extends State<CircularProgressButton>
   }
 
   void _onTap() {
-    widget.onTap();
-
     if (_currentProgress >= 0.99) return;
+
+    widget.onTap();
 
     _previousProgress = _currentProgress;
     _currentStep++;
@@ -113,7 +114,7 @@ class _CircularProgressButtonState extends State<CircularProgressButton>
       _animationController.stop();
 
       // Only animate if currentStep > 0
-      if (widget.currentStep != null && widget.currentStep! > 0) {
+      if (widget.currentStep > 0) {
         _animationController.forward();
       } else {
         setState(() {
@@ -141,11 +142,12 @@ class _CircularProgressButtonState extends State<CircularProgressButton>
                 shape: BoxShape.circle,
                 color: widget.theme.progressColor,
               ),
-              child: Icon(
-                widget.theme.icon,
-                color: widget.theme.iconColor,
-                size: widget.theme.iconSize,
-              ),
+              child: widget.theme.iconWidget ??
+                  Icon(
+                    widget.theme.icon,
+                    color: widget.theme.iconColor,
+                    size: widget.theme.iconSize,
+                  ),
             ),
           ),
         ),
