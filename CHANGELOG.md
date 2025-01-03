@@ -1,3 +1,7 @@
+## 0.0.5
+
+- Bug last onTap
+
 ## 0.0.4
 
 - Bug Fixes:

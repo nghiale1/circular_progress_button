@@ -58,14 +58,20 @@ class _MyHomePageState extends State<MyHomePage> {
                 iconSize: 50,
                 icon: Icons.navigate_next,
                 // iconWidget: Padding(
-                //   padding: const EdgeInsets.all(10.0),
-                //   child: SvgPicture.asset('assets/next.svg', width: 35, height: 35, color: Colors.white,),
+                //   padding: const EdgeInsets.all(12.0),
+                //   child: SvgPicture.asset('assets/next.svg', width: 30, height: 30, color: Colors.white,),
                 // ),
               ),
               onTap: () {
                 if (currentStep == totalSteps) {
-                  print("Completed");
+                  print('CircularProgressButton: All $totalSteps steps completed');
                 }
+                setState(() {
+                  if (currentStep < totalSteps) {
+                    currentStep++;
+                    print('CircularProgressButton: Step $currentStep of $totalSteps completed');
+                  }
+                });
               },
               onComplete: () => print('Completed!'),
               animationDuration: const Duration(milliseconds: 1000),

@@ -91,9 +91,9 @@ class _CircularProgressButtonState extends State<CircularProgressButton>
   }
 
   void _onTap() {
-    if (_currentProgress >= 0.99) return;
-
     widget.onTap();
+
+    if (_currentProgress >= 0.99) return;
 
     _previousProgress = _currentProgress;
     _currentStep++;
